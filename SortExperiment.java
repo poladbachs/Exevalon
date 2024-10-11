@@ -1,8 +1,6 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 public class SortExperiment {
@@ -15,7 +13,7 @@ public class SortExperiment {
         // Create CSV directory
         createDirectory();
 
-        Sorter<Integer>[] algorithms = new Sorter[] {
+        Sorter<Integer>[] algorithms = new Sorter[]{
                 new BubbleSortUntilNoChange<>(),
                 new BubbleSortWhileNeeded<>(),
                 new QuickSortGPT<>(),
@@ -35,7 +33,7 @@ public class SortExperiment {
     }
 
     private static void runExperiment(Sorter<Integer> algorithm, int size, String dataType) {
-        long totalTime = 0;
+        double totalTime = 0;
 
         for (int i = 0; i < REPEATS; i++) {
             Integer[] array = generateArray(size, dataType);
@@ -43,14 +41,16 @@ public class SortExperiment {
             long startTime = System.nanoTime();
             algorithm.sort(array);
             long endTime = System.nanoTime();
-            long execTime = (endTime - startTime);
-            totalTime += execTime;
 
-            // Save results to CSV
-            saveResultsToCSV(algorithm.getClass().getSimpleName(), size, dataType, execTime, i + 1);
+            // Convert execution time to seconds
+            double execTimeInMilliSeconds = (endTime - startTime) / 1_000_000.0; // Convert to seconds
+            totalTime += execTimeInMilliSeconds;
+
+            // Save results to CSV in seconds
+            saveResultsToCSV(algorithm.getClass().getSimpleName(), size, dataType, execTimeInMilliSeconds, i + 1);
         }
 
-        System.out.printf("Algorithm: %s, Size: %d, Data Type: %s, Avg Time: %d ns%n",
+        System.out.printf("Algorithm: %s, Size: %d, Data Type: %s, Avg Time: %.9f ms%n",
                 algorithm.getClass().getSimpleName(), size, dataType, totalTime / REPEATS);
     }
 
@@ -97,7 +97,7 @@ public class SortExperiment {
         return array;
     }
 
-    private static void saveResultsToCSV(String algorithmName, int size, String dataType, long execTime, int index) {
+    private static void saveResultsToCSV(String algorithmName, int size, String dataType, double execTime, int index) {
         try {
             File directory = new File(DIRECTORY_NAME);
             if (!directory.exists()) {
@@ -112,7 +112,8 @@ public class SortExperiment {
                 if (writeHeader) {
                     writer.append("Index,SortingAlgo,SortingType,DataType,DataSize,ExeTime\n");
                 }
-                writer.append(String.format("%d,%s,%s,%s,%d,%d\n", index, algorithmName, "Ascending", dataType, size, execTime));
+                writer.append(String.format("%d,%s,%s,%s,%d,%.9f\n", index, algorithmName, "Ascending", dataType, size,
+                        execTime));
             }
         } catch (IOException e) {
             e.printStackTrace();

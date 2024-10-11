@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.ticker as mticker
 
 # Directory where results CSVs are stored
 csv_directory = "./data_csv"
@@ -37,14 +38,16 @@ for size in data_sizes:
     plt.figure(figsize=(10, 6))
     plt.title(f"Performance Comparison for {size} Elements", loc="center")
     plt.xlabel("Sorting Algorithms")
-    plt.ylabel("Average Execution Time (ns)")
+    plt.ylabel("Average Execution Time (ms)")  # Keep y-axis in seconds
 
-    # Plot each algorithm's average execution time as a bar chart
-    plt.plot(avg_exec_times["SortingAlgo"], avg_exec_times["ExeTime"], marker='o', label=f"Size: {size}")
+    # Plot each algorithm's average execution time as a line plot with markers
+    plt.plot(avg_exec_times["SortingAlgo"], avg_exec_times["ExeTime"], marker='o')
 
-    # Adding grid and legend
+    # Format y-axis to avoid scientific notation
+    plt.gca().yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f'{x:.2f}'))  # Show as floating point
+
+    # Adding grid
     plt.grid(True)
-    plt.legend()
 
     # Save the plot
     plt.savefig(f"{results_dir}/algo_performance_comparison_{size}.png", dpi=300)
