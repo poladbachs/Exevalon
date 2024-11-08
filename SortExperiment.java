@@ -3,14 +3,23 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 
+/**
+ * This class conducts sorting experiments on various algorithms, array sizes, 
+ * and data types, measuring the execution time and storing results in CSV files.
+ */
 public class SortExperiment {
 
-    private static final int[] SIZES = {100, 1000, 10000}; // Data sizes
-    private static final int REPEATS = 10; // Number of repeats for each config
-    private static final String DIRECTORY_NAME = "data_csv"; // CSV directory
+    private static final int[] SIZES = {100, 1000, 10000};
+    private static final int REPEATS = 10;
+    private static final String DIRECTORY_NAME = "data_csv";
 
+    /**
+     * Main method to set up and run sorting experiments for each algorithm,
+     * array size, and data type.
+     *
+     * @param args Command line arguments (not used).
+     */
     public static void main(String[] args) {
-        // Create CSV directory
         createDirectory();
 
         Sorter<Integer>[] algorithms = new Sorter[]{
@@ -22,7 +31,6 @@ public class SortExperiment {
 
         String[] dataTypes = {"Random", "Sorted", "ReverseSorted", "PartiallySorted", "DuplicateValues"};
 
-        // Run experiments
         for (Sorter<Integer> algorithm : algorithms) {
             for (int size : SIZES) {
                 for (String dataType : dataTypes) {
@@ -32,6 +40,14 @@ public class SortExperiment {
         }
     }
 
+    /**
+     * Runs a sorting experiment for a given algorithm, array size, and data type.
+     * Measures the average execution time over a number of repetitions.
+     *
+     * @param algorithm The sorting algorithm to test.
+     * @param size The size of the array to be sorted.
+     * @param dataType The type of data in the array (e.g., "Random", "Sorted").
+     */
     private static void runExperiment(Sorter<Integer> algorithm, int size, String dataType) {
         double totalTime = 0;
 
@@ -42,11 +58,9 @@ public class SortExperiment {
             algorithm.sort(array);
             long endTime = System.nanoTime();
 
-            // Convert execution time to seconds
-            double execTimeInMilliSeconds = (endTime - startTime) / 1_000_000.0; // Convert to seconds
+            double execTimeInMilliSeconds = (endTime - startTime) / 1_000_000.0;
             totalTime += execTimeInMilliSeconds;
 
-            // Save results to CSV in seconds
             saveResultsToCSV(algorithm.getClass().getSimpleName(), size, dataType, execTimeInMilliSeconds, i + 1);
         }
 
@@ -54,6 +68,13 @@ public class SortExperiment {
                 algorithm.getClass().getSimpleName(), size, dataType, totalTime / REPEATS);
     }
 
+    /**
+     * Generates an array of integers of a given size and data type.
+     *
+     * @param size The size of the array to generate.
+     * @param dataType The type of data distribution in the array (e.g., "Random", "Sorted").
+     * @return The generated array of integers.
+     */
     private static Integer[] generateArray(int size, String dataType) {
         Random random = new Random();
         Integer[] array = new Integer[size];
@@ -78,7 +99,6 @@ public class SortExperiment {
                 for (int i = 0; i < size; i++) {
                     array[i] = i;
                 }
-                // Randomly swap 10% of the array
                 for (int i = 0; i < size / 10; i++) {
                     int index1 = random.nextInt(size);
                     int index2 = random.nextInt(size);
@@ -97,6 +117,15 @@ public class SortExperiment {
         return array;
     }
 
+    /**
+     * Saves the results of a sorting experiment to a CSV file.
+     *
+     * @param algorithmName The name of the sorting algorithm.
+     * @param size The size of the data set.
+     * @param dataType The type of data in the array.
+     * @param execTime The execution time in milliseconds.
+     * @param index The current repetition index.
+     */
     private static void saveResultsToCSV(String algorithmName, int size, String dataType, double execTime, int index) {
         try {
             File directory = new File(DIRECTORY_NAME);
@@ -120,6 +149,9 @@ public class SortExperiment {
         }
     }
 
+    /**
+     * Creates a directory for storing CSV files if it does not already exist.
+     */
     private static void createDirectory() {
         File directory = new File(DIRECTORY_NAME);
         if (!directory.exists()) {
