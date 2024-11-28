@@ -13,13 +13,8 @@
         </p>
         <p class="instruction-text">Select the right option:</p>
         <ul class="options-list">
-          <li
-            v-for="(item, index) in currentItems"
-            :key="index"
-            @click="selectItem(item)"
-            :class="{ 'disabled': allTasksCompleted }"
-            class="option-item"
-          >
+          <li v-for="(item, index) in currentItems" :key="index" @click="selectItem(item)"
+            :class="{ 'disabled': allTasksCompleted }" class="option-item">
             {{ item.identifier }}
           </li>
         </ul>
@@ -32,6 +27,13 @@
           🎉 Congratulations! You completed the experiment. Your results have
           been saved in your Downloads folder.
         </h1>
+
+        <div v-if="allTasksCompleted" class="center-button-container">
+          <button class="form-button go-back-button" @click="goBackToWelcome">
+            Go Back to Welcome Page
+          </button>
+        </div>
+
       </div>
     </section>
 
@@ -151,6 +153,9 @@ export default {
       console.log("Experiment Completed", this.selectedAnswers);
       this.storeAnswerAndTime();
     },
+    goBackToWelcome() {
+      this.$emit("back");
+    },
   },
 };
 </script>
@@ -237,6 +242,7 @@ body {
   margin-bottom: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
+  user-select: none;
 }
 
 .option-item:hover {
@@ -253,6 +259,7 @@ body {
   font-size: 16px;
   color: #ff6363;
   margin-top: 15px;
+  user-select: none;
 }
 
 .completion-message {
@@ -271,14 +278,40 @@ body {
   font-size: 14px;
 }
 
+/* Centered Back Button */
+.center-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.go-back-button {
+  background-color: #1e1e2f;
+  color: #ffffff;
+  border: 1px solid #ff6363;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.go-back-button:hover {
+  background-color: #ff6363;
+  color: #ffffff;
+}
+
 /* Animations */
 @keyframes pulse {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.05);
   }
+
   100% {
     transform: scale(1);
   }

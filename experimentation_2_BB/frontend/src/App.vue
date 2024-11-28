@@ -5,7 +5,7 @@
       <main class="main-home">
         <WelcomePage v-if="currentStep === 'welcome'" @proceed="currentStep = 'demographic'" />
         <DemographicForm v-if="currentStep === 'demographic'" @back="currentStep = 'welcome'" @formSubmitted="currentStep = 'experiment'" />
-        <ExperimentInterface v-if="currentStep === 'experiment'" @formSubmitted="currentStep = 'experiment'"/>
+        <ExperimentInterface v-if="currentStep === 'experiment'" @formSubmitted="currentStep = 'experiment'" @back="currentStep = 'welcome'"/>
       </main>
       <div class="left_blank"></div>
     </section>
