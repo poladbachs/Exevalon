@@ -59,7 +59,7 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("assets/code.jpg");
+  background-image: url("assets/pascal-case-vs-camel-case.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
