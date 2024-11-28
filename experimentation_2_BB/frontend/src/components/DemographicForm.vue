@@ -8,17 +8,21 @@
 
       <label for="gender">Gender:</label>
       <select id="gender" v-model="gender">
-      <option value="female">Female</option>
-      <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
       </select>
       <br>
 
-      <label for="education">Educational Background:</label>
+      <label for="education">Last Education:</label>
       <input type="text" id="education" v-model="education">
       <br>
 
-      <label for="experience">Programming Experience (years):</label>
+      <label for="experience"> Years of Programming Experience:</label>
       <input type="number" id="experience" v-model="experience">
+      <br>
+
+      <label for="country">Country where you lived the most:</label>
+      <input type="text" id="country" v-model="country">
       <br>
 
       <button type="submit">Submit</button>
@@ -35,7 +39,8 @@ export default {
       age: null,
       gender: '', 
       education: '',
-      experience: null
+      experience: null,
+      country: ''
     };
   },
     // Your Vue component making an API request
@@ -46,6 +51,7 @@ methods: {
       gender: this.gender,
       education: this.education,
       experience: this.experience,
+      country: this.country
     };
 
     fetch('http://localhost:3000/api/submit-form', {
