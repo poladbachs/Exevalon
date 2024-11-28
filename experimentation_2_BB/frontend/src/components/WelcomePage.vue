@@ -1,100 +1,230 @@
 <template>
-  <div>
-    <h1>Welcome</h1>
-    <div class="text-box">
-      <h3>Experiment Explanation:</h3>
-      <p>
-        The purpose of the experiment is to find out if there is any difference
-        in natural language reading between camelCase and kebab-case.
-      </p>
-    </div>
-    <div class="text-box">
-      <h3>What is the difference between these 2 fonts?</h3>
-      <ul>
-        <li>
-          <p>
-            <b>camelCase:</b> always starts with lowercase letter and then for
-            every word after the first one uses a Capital letter for the first
-            letter of the word. For example: (1) doSomething; (2)
-            thePenIsOnTheTable.
-          </p>
-        </li>
-        <li>
-          <p>
-            <b>kebab-case</b>words are separeted by a dash (-). For example,
-            (1) do-something. (2) the-pen-is-one-the-table.
-          </p>
-        </li>
-      </ul>
+  <div class="main-container">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="header-title">🚀 Welcome to the Experiment</h1>
+    </header>
+
+    <!-- Cards Section -->
+    <section class="cards-section">
+      <!-- Experiment Explanation -->
+      <div class="card">
+        <h3 class="card-title">📝 Experiment Explanation</h3>
+        <p>
+          The purpose of the experiment is to determine if there's a difference
+          in reading natural language between <b>camelCase</b> and
+          <b>kebab-case</b>.
+        </p>
+      </div>
+
+      <!-- Difference Between Fonts -->
+      <div class="card">
+        <h3 class="card-title">🔍 Difference Between Fonts</h3>
+        <ul>
+          <li>
+            <b>camelCase:</b> Words start with lowercase, subsequent words
+            capitalize the first letter (e.g., <code>doSomething</code>).
+          </li>
+          <li>
+            <b>kebab-case:</b> Words are separated by dashes (e.g.,
+            <code>do-something</code>).
+          </li>
+        </ul>
+      </div>
+
+      <!-- Experiment Purpose -->
+      <div class="card">
+        <h3 class="card-title">🎯 Purpose of the Experiment</h3>
+        <p>
+          You'll choose the correct transformation between camelCase and
+          kebab-case. The goal is to measure which is faster to read and
+          understand.
+        </p>
+      </div>
+
+      <!-- User Expectations -->
+      <div class="card">
+        <h3 class="card-title">💡 What is Expected?</h3>
+        <ol>
+          <li><b>Focus:</b> Stay attentive, as this will only take a few minutes.</li>
+          <li><b>First Instinct:</b> Rely on your initial impressions.</li>
+          <li><b>Honesty:</b> Complete the experiment independently.</li>
+          <li><b>Completeness:</b> Finish the quiz to contribute valuable data.</li>
+        </ol>
+      </div>
+
+      <!-- Use of Data -->
+      <div class="card">
+        <h3 class="card-title">🔒 Use of Data</h3>
+        <ul>
+          <li>
+            <b>Data Management:</b> The collected data will be used for the
+            experiment only.
+          </li>
+          <li>
+            <b>Confidentiality:</b> No personal identifiers will be stored.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Proceed Button -->
+    <div class="button-container">
+      <button @click="$emit('proceed')" class="proceed-button">Start the Experiment</button>
     </div>
 
-    <div class="text-box">
-      <h3>The experiment will work in the following way:</h3>
-      <p>During this very short experiment, you will be presented with a sentence and for options either in camelCase
-        or in kebab-case, you will need to select the sentence that transofrm correctly the header sentence to either
-        one of this fonts.</p>
-      <h3>What is the purpose?</h3>
-      <p>We will collect the time taken and see which font is faster to read and undestand.</p>
-    </div>
-    <div class="text-box">
-      <h3>What is expected?</h3>
-      <ol>
-        <li>
-          <p><b>Focus:</b> This experiment takes literally minutes so please be focused during this time.</p>
-        </li>
-        <li>
-          <p><b>First instinct:</b> Make your selections based on your first instinct.</p>
-        </li>
-        <li>
-          <p><b>Honesty:</b> Do this alone.</p>
-        </li>
-        <li>
-          <p><b>Completness:</b> Please complete the quiz until the end.</p>
-        </li>
-      </ol>
-    </div>
-
-    <div class="text-box">
-      <h3>Use of Data</h3>
-      <ul>
-        <li>
-          <p><b>Data Management:</b> By doing the survey you allows us to use data gathered in our experiemnt.</p>
-        </li>
-        <li>
-          <p><b>Confidentiality:</b> Apart from being used in our experiment and on experiments trying to
-            replicate this study the data given is confidential, no name or way to refence this data to a
-            someone is possible.</p>
-        </li>
-        <li>
-          <p><b>Usage of Data:</b> The data collected will be used only for experiemnt purposes.</p>
-        </li>
-      </ul>
-    </div>
-    <button @click="$emit('proceed')">Proceed</button>
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Created with ❤️ for research purposes.</p>
+    </footer>
   </div>
 </template>
-  
-  <script>
-  export default {
-    name: 'WelcomePage',
-  };
-  </script>
-  
+
+<script>
+export default {
+  name: "ExperimentPage",
+};
+</script>
 
 <style>
-
-.text-box{
-    border-radius: 8px;
-    background-color: #f2f2f2;
-    padding: 20px;
-    border: 2px solid  #E4A700;
-    margin-top:10px;
-    margin-bottom: 10px;
+/* General Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #1e1e2f;
+  color: #ffffff;
 }
 
-.text-box:hover{
-    scale: 0.97;
-    transition: 1.5s;
+/* Main Container */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
+/* Header */
+.header {
+  width: 100%;
+  background-color: #ff6363;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.header-title {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+  text-transform: uppercase;
+  animation: pulse 2s infinite;
+}
+
+/* Cards Section */
+.cards-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.card {
+  background-color: #2e2e3e;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #ff6363;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.card-title {
+  font-size: 20px;
+  color: #ff6363;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #cfcfcf;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Updated Styles for List Items (Points) */
+.card ul li,
+.card ol li {
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent dark background */
+  color: #ffffff; /* Bright text for visibility */
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card ul li b,
+.card ol li b {
+  color: #ff6363; /* Highlight important points in red */
+}
+
+/* Proceed Button */
+.button-container {
+  margin-top: 20px;
+}
+
+.proceed-button {
+  background-color: #ff6363;
+  color: #ffffff;
+  font-size: 18px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.proceed-button:hover {
+  background-color: #ff4747;
+  transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+  margin-top: 40px;
+  padding: 10px;
+  text-align: center;
+  color: #cfcfcf;
+  font-size: 14px;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 24px;
+  }
+  .card-title {
+    font-size: 18px;
+  }
+}
 </style>
