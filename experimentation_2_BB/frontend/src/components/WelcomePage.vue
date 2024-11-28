@@ -87,7 +87,6 @@ export default {
 </script>
 
 <style>
-/* General Styles */
 body {
   margin: 0;
   padding: 0;
@@ -96,7 +95,6 @@ body {
   color: #ffffff;
 }
 
-/* Main Container */
 .main-container {
   display: flex;
   flex-direction: column;
@@ -105,7 +103,6 @@ body {
   padding: 20px;
 }
 
-/* Header */
 .header {
   width: 100%;
   background-color: #ff6363;
@@ -124,7 +121,6 @@ body {
   animation: pulse 2s infinite;
 }
 
-/* Cards Section */
 .cards-section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -158,11 +154,10 @@ body {
   line-height: 1.5;
 }
 
-/* Updated Styles for List Items (Points) */
 .card ul li,
 .card ol li {
-  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent dark background */
-  color: #ffffff; /* Bright text for visibility */
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
   padding: 10px;
   border-radius: 6px;
   margin-bottom: 10px;
@@ -173,10 +168,10 @@ body {
 
 .card ul li b,
 .card ol li b {
-  color: #ff6363; /* Highlight important points in red */
+  color: #ff6363;
 }
 
-/* Proceed Button */
+
 .button-container {
   margin-top: 20px;
 }
@@ -197,7 +192,6 @@ body {
   transform: scale(1.05);
 }
 
-/* Footer */
 .footer {
   margin-top: 40px;
   padding: 10px;
@@ -206,7 +200,6 @@ body {
   font-size: 14px;
 }
 
-/* Animations */
 @keyframes pulse {
   0% {
     transform: scale(1);

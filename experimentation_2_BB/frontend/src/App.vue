@@ -23,11 +23,10 @@ export default {
     WelcomePage,
     DemographicForm,
     ExperimentInterface,
-    // ExperimentInterface, when needed
   },
   data() {
     return {
-      currentStep: 'welcome', // Initial step
+      currentStep: 'welcome',
     };
   },
   
@@ -54,7 +53,7 @@ html, body {
 
 body::before {
   content: "";
-  position: fixed; /* Fixed to cover the entire viewport */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -63,8 +62,8 @@ body::before {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  opacity: 0.25; /* Apply opacity here */
-  z-index: -1; /* Behind the content */
+  opacity: 0.25;
+  z-index: -1;
 }
 
 .page {
@@ -73,7 +72,7 @@ body::before {
   display: flex;
   flex-direction: column;
   position: relative;
-  z-index: 1; /* Ensure it's above the background */
+  z-index: 1;
 }
 
 
@@ -91,6 +90,5 @@ body::before {
 .right_blank, .left_blank{
   flex: 1 1 0rem;
 }
-
 
 </style>

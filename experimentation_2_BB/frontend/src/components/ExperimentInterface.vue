@@ -161,7 +161,6 @@ export default {
 </script>
 
 <style>
-/* General Styles */
 body {
   margin: 0;
   padding: 0;
@@ -170,7 +169,6 @@ body {
   color: #ffffff;
 }
 
-/* Main Container */
 .main-container {
   display: flex;
   flex-direction: column;
@@ -179,7 +177,6 @@ body {
   padding: 20px;
 }
 
-/* Header */
 .header {
   width: 100%;
   background-color: #ff6363;
@@ -198,7 +195,6 @@ body {
   animation: pulse 2s infinite;
 }
 
-/* Content Section */
 .content-section {
   width: 100%;
   display: flex;
@@ -269,7 +265,6 @@ body {
   text-align: center;
 }
 
-/* Footer */
 .footer {
   margin-top: 40px;
   padding: 10px;
@@ -278,7 +273,6 @@ body {
   font-size: 14px;
 }
 
-/* Centered Back Button */
 .center-button-container {
   display: flex;
   justify-content: center;
@@ -302,7 +296,6 @@ body {
   color: #ffffff;
 }
 
-/* Animations */
 @keyframes pulse {
   0% {
     transform: scale(1);

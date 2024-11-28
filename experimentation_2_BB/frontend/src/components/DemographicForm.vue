@@ -108,14 +108,13 @@ export default {
         .then((response) => response.json())
         .then((data) => {
           console.log("Response from server:", data);
-          this.$emit("formSubmitted"); // Emit event after successful submission
+          this.$emit("formSubmitted");
         })
         .catch((error) => {
           console.error("Error communicating with the server:", error);
         });
     },
     goBack() {
-      // Emit an event to go back
       this.$emit("back");
     },
   },
@@ -123,7 +122,6 @@ export default {
 </script>
 
 <style>
-/* General Styles */
 body {
   margin: 0;
   padding: 0;
@@ -132,7 +130,6 @@ body {
   color: #ffffff;
 }
 
-/* Main Container */
 .main-container {
   display: flex;
   flex-direction: column;
@@ -141,7 +138,6 @@ body {
   padding: 20px;
 }
 
-/* Header */
 .header {
   width: 100%;
   background-color: #ff6363;
@@ -160,7 +156,6 @@ body {
   animation: pulse 2s infinite;
 }
 
-/* Form Section */
 .form-section {
   width: 100%;
   display: flex;
@@ -204,7 +199,6 @@ body {
   box-shadow: 0 0 4px rgba(255, 99, 99, 0.8);
 }
 
-/* Buttons */
 .button-container {
   display: flex;
   gap: 10px;
@@ -240,7 +234,6 @@ body {
   color: #ffffff;
 }
 
-/* Footer */
 .footer {
   margin-top: 40px;
   padding: 10px;
@@ -249,7 +242,6 @@ body {
   font-size: 14px;
 }
 
-/* Animations */
 @keyframes pulse {
   0% {
     transform: scale(1);
