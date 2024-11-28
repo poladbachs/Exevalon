@@ -1,14 +1,14 @@
 <template>
   <div>
-    <h2>Experiment Task</h2>
-    <p>Given sentence: "{{ currentSentence }}"</p>
-    <p>Select the corresponding identifier:</p>
+    <h2>Questions</h2>
+    <p>Sentence: "{{ currentSentence }}"</p>
+    <p>Select the right option:</p>
     <ul>
       <li v-for="(item, index) in currentItems" :key="index" @click="selectItem(item)" :class="{ 'disabled': allTasksCompleted }">
         {{ item.identifier }}
       </li>
     </ul>
-    <p v-if="selectedAnswers.length > 0">Time taken for the last task: {{ getLastTaskTime() }} milliseconds</p>
+    <p v-if="selectedAnswers.length > 0">Time taken: {{ getLastTaskTime() }} milliseconds</p>
     <h1 v-if="allTasksCompleted">Congratulations! You completed our experiment. Your results are stored in the Downloads folder of your device.</h1>
   </div>
 </template>
@@ -19,22 +19,106 @@ export default {
   data() {
     return {
       tasks: [
-  { sentence: "navigate to the southern region", options: ["navigateSouthernRegion", "navigateSouthernRealm", "navigateSouthernReserve", "navigate-southern-region"], correct: "navigate-southern-region" },
-  { sentence: "access the main entrance door", options: ["access-main-entrance-depot", "access-main-entrance-drape", "accessMainEntranceDoor", "access-main-entrance-dock"], correct: "accessMainEntranceDoor" },
-  { sentence: "permanently store the new file", options: ["permanentlyStoreNewFolder", "permanently-store-new-film", "permanentlyStoreNewFile", "permanently-store-new-fabric"], correct: "permanently-store-new-file" },
-  { sentence: "irreversibly erase the outdated record", options: ["irreversiblyEraseOutdatedRecord", "irreversibly-erase-outdated-relic", "irreversibly-erase-outdated-rumor", "irreversiblyEraseOutdatedReport"], correct: "irreversiblyEraseOutdatedRecord" },
-  { sentence: "immediately upload the high-resolution image", options: ["immediately-upload-high-resolution-illusion", "immediatelyUploadHighResolutionImage", "immediately-upload-high-resolution-item", "immediatelyUploadHighResolutionImpact"], correct: "immediately-upload-high-resolution-image" },
-  { sentence: "modify the existing user profile settings", options: ["modify-existing-user-profile-system", "modify-existing-user-profile-scheme", "modifyExistingUserProfileSettings", "modify-existing-user-profile-survey"], correct: "modifyExistingUserProfileSettings" },
-  { sentence: "thoroughly read the entire book", options: ["thoroughlyReadEntireBooklet", "thoroughly-read-entire-bulletin", "thoroughlyReadEntireBook", "thoroughly-read-entire-brochure"], correct: "thoroughly-read-entire-book" },
-  { sentence: "quickly send a confidential email", options: ["quicklySendConfidentialEmail", "quickly-send-confidential-excerpt", "quickly-send-confidential-essay", "quicklySendConfidentialEpistle"], correct: "quicklySendConfidentialEmail" },
-  { sentence: "systematically create a brand new account", options: ["systematically-create-brand-new-arrangement", "systematicallyCreateBrandNewAccount", "systematically-create-brand-new-agenda", "systematicallyCreateBrandNewAppointment"], correct: "systematically-create-brand-new-account" },
-  { sentence: "play the classical music loudly", options: ["play-classical-music-loudspeaker", "playClassicalMusicLoudly", "play-classical-music-loft", "playClassicalMusicLounge"], correct: "playClassicalMusicLoudly" },
-  { sentence: "accurately check the current account balance", options: ["accuratelyCheckCurrentAccountBill", "accurately-check-current-account-budget", "accuratelyCheckCurrentAccountBalance", "accurately-check-current-account-bankroll"], correct: "accurately-check-current-account-balance" },
-  { sentence: "neatly print the important document", options: ["neatly-print-important-declaration", "neatlyPrintImportantDocument", "neatly-print-important-dossier", "neatlyPrintImportantDraft"], correct: "neatlyPrintImportantDocument" },
-  { sentence: "efficiently scan the unique QR code", options: ["efficientlyScanUniqueQrCraft", "efficiently-scan-unique-qr-clip", "efficientlyScanUniqueQrCode", "efficiently-scan-unique-qr-cue"], correct: "efficiently-scan-unique-qr-code" },
-  { sentence: "regularly update the project status report", options: ["regularlyUpdateProjectStatusReport", "regularly-update-project-status-recap", "regularly-update-project-status-review", "regularlyUpdateProjectStatusRecord"], correct: "regularlyUpdateProjectStatusReport" },
-  { sentence: "securely lock the computer screen", options: ["securely-lock-computer-surface", "securelyLockComputerScreen", "securely-lock-computer-slate", "securelyLockComputerShield"], correct: "securely-lock-computer-screen" },
-  { sentence: "organize the office workspace efficiently", options: ["organizeOfficeWorkspace", "organize-office-workspace", "officeWorkspaceOrganize", "organizeWorkspaceOffice"], correct: "organize-office-workspace" }],
+  { 
+    sentence: "right left", 
+    options: ["rightLeft", "rightleft", "Rightleft", "Right Left"], 
+    correct: "rightLeft" },
+  { 
+    sentence: "bubble sort algorithm", 
+    options: ["bubbleSortalgorithm", "bubbleSortAlgorithm", "Bubble Sort algorithm", "bubble Sor Talgorithm"], 
+    correct: "bubbleSortAlgorithm" 
+  },
+  {
+    sentence: "tree traversal",
+    options: ["treeTraversal", "TreeTraversal", "treetraversal", "Tree Traversal"],
+    correct: "treeTraversal"
+  },
+  {
+    sentence: "binary search",
+    options: ["BinarySearch", "binarySearch", "binarysearch", "Binary search"],
+    correct: "binarySearch"
+  },
+  {
+    sentence: "merge sort",
+    options: ["mergeSort", "MergeSort", "mergesort", "Merge Sort"],
+    correct: "mergeSort"
+  },
+  {
+    sentence: "hash table",
+    options: ["hashTable", "HashTable", "hash table", "hashtable"],
+    correct: "hashTable"
+  },
+  {
+    sentence: "depth first search",
+    options: ["DepthFirstSearch", "depthfirstsearch", "depthFirstSearch", "depth First Search"],
+    correct: "depthFirstSearch"
+  },
+  {
+    sentence: "quick sort",
+    options: ["quickSort", "QuickSort", "quicksort", "Quick Sort"],
+    correct: "quickSort"
+  },
+  {
+    sentence: "priority queue",
+    options: ["priorityQueue", "PriorityQueue", "priorityqueue", "Priority Queue"],
+    correct: "priorityQueue"
+  },
+  {
+    sentence: "linked list",
+    options: ["linkedList", "LinkedList", "linkedlist", "Linked List"],
+    correct: "linkedList"
+  },
+        
+  {
+    sentence: "right left",
+    options: ["right-left", "rightleft", "right-left", "right left"],
+    correct: "right-left"
+  },
+  {
+    sentence: "bubble sort algorithm",
+    options: ["bubble-sort-algorithm", "bubblesort-algorithm", "bubble-sort-algorithm", "bubble Sort Algorithm"],
+    correct: "bubble-sort-algorithm"
+  },
+  {
+    sentence: "tree traversal",
+    options: ["tree-traversal", "treeTraversal", "tree traversal", "tree-traversal"],
+    correct: "tree-traversal"
+  },
+  {
+    sentence: "binary search",
+    options: ["binary-search", "binary-search", "binary-search", "Binary search"],
+    correct: "binary-search"
+  },
+  {
+    sentence: "merge sort",
+    options: ["merge-sort", "mergeSort", "merge sort", "merge Sort"],
+    correct: "merge-sort"
+  },
+  {
+    sentence: "hash table",
+    options: ["hash-table", "hashTable", "hash-table", "hashtable"],
+    correct: "hash-table"
+  },
+  {
+    sentence: "depth first search",
+    options: ["depth-first-search", "depthFirstSearch", "depth-first-search", "depth First Search"],
+    correct: "depth-first-search"
+  },
+  {
+    sentence: "quick sort",
+    options: ["quick-sort", "quickSort", "quick-sort", "Quick Sort"],
+    correct: "quick-sort"
+  },
+  {
+    sentence: "priority queue",
+    options: ["priority-queue", "priorityQueue", "priority-queue", "Priority Queue"],
+    correct: "priority-queue"
+  },
+  {
+    sentence: "linked list",
+    options: ["linked-list", "linkedList", "linked-list", "Linked List"],
+    correct: "linked-list"
+  }],
       currentTaskIndex: 0,
       startTime: null,
       selectedAnswers: [],
