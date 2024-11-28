@@ -27,19 +27,13 @@ app.post('/api/submit-form', async (req, res) => {
   const formData = req.body;
 
   try {
-    // Connect to the MongoDB database
-    const client = await MongoClient.connect(mongoUrl, { useNewUrlParser: true });
-    const db = client.db(dbName);
+    // You can process the form data here (e.g., log it, validate it, etc.)
+    console.log('Form data received:', formData);
 
-    // Insert the form data into the MongoDB collection
-    await db.collection('formData').insertOne(formData);
-
-    // Close the database connection
-    client.close();
-
-    res.json({ message: 'Form data received and stored successfully!', formData });
+    // Send a success response to the client
+    res.json({ message: 'Form data received successfully!', formData });
   } catch (error) {
-    console.error('Error storing form data in MongoDB:', error);
+    console.error('Error handling form data:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
