@@ -1,63 +1,78 @@
 <template>
-    <div>
-      <h1>Welcome to the Code Reading Experiment</h1>
-      <div class="text-box">
-        <h3>Purpose of the Experiment</h3>
-        <p>
-            Welcome to our research study on coding styles and their impact on readability and comprehension. This experiment is designed to investigate how different naming conventions in source code can affect the speed and accuracy of code understanding. Specifically, we are comparing two popular naming conventions: camelCase and kebab-case.
-        </p>
-      </div>
-      <div class="text-box">
-        <h3>What are camelCase and kebab-case?</h3>
-        <ul>
-            <li>
-                <p> 
-                    <b>camelCase:</b> In this style, multi-word identifiers are written as a single word, starting with a lowercase letter, and each subsequent word starts with an uppercase letter, <b>e.g., exampleIdentifier.</b>
-                </p>
-            </li>
-            <li>
-                <p> 
-                    <b>kebab-case</b>Here, words are written in lowercase and separated by hyphens, <b>e.g., example-identifier.</b>
-                </p>
-            </li>
-        </ul>
-      </div>
-      
-      <div class="text-box">
-        <h3>How Will the Experiment Work?</h3>
-        <p>During this experiment, you will be presented with a series of tasks. Each task involves reading a short phrase and then selecting the corresponding code identifier from a list. These identifiers will be in either camelCase or kebab-case format.</p>
-        <h3>What We Will Measure</h3>
-        <p>We will measure the time it takes for you to correctly identify the corresponding code identifier. Your accuracy in selecting the correct identifier will also be recorded.</p>
-      </div>
-      <div class="text-box">
-        <h3>What Do We Expect from You?</h3>
-        <ol>
-            <li><p><b>Focus and attention:</b> We kindly ask for your full attention during the experiment to ensure the accuracy of the results.</p></li>
-            <li><p><b>Honesty:</b> Please make your selections based on your first instinct. This will help us gather authentic data.</p></li>
-            <li><p><b>Completion:</b> Try to complete all the tasks presented to you.</p></li>
-        </ol>
-      </div>
-
-      <div class="text-box">
-        <h3>Confidentiality and Use of Data</h3>
-        <ul>
-            <li>
-                <p><b>Confidentiality:</b> Your participation in this experiment is completely voluntary, and all information you provide will remain confidential. No personal data will be disclosed.</p>
-            </li>
-            <li>
-                <p><b>Data Usage:</b> The data collected will be used solely for academic purposes, specifically to evaluate the impact of naming conventions in programming on readability and comprehension.</p>
-            </li>
-        </ul>
-      </div>
-      <div class="text-box">
-        <h2>Thank You for Your Participation!</h2>
-        <p>
-            Your contribution is invaluable to this research and will help enhance our understanding of best practices in programming. If you have any questions or concerns, please feel free to ask.
-        </p>
-      </div>
-      <button @click="$emit('proceed')">Proceed</button>
+  <div>
+    <h1>Welcome</h1>
+    <div class="text-box">
+      <h3>Experiment Explanation:</h3>
+      <p>
+        The purpose of the experiment is to find out if there is any difference
+        in natural language reading between camelCase and kebab-case.
+      </p>
     </div>
-  </template>
+    <div class="text-box">
+      <h3>What is the difference between these 2 fonts?</h3>
+      <ul>
+        <li>
+          <p>
+            <b>camelCase:</b> always starts with lowercase letter and then for
+            every word after the first one uses a Capital letter for the first
+            letter of the word. For example: (1) doSomething; (2)
+            thePenIsOnTheTable.
+          </p>
+        </li>
+        <li>
+          <p>
+            <b>kebab-case</b>words are separeted by a dash (-). For example,
+            (1) do-something. (2) the-pen-is-one-the-table.
+          </p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="text-box">
+      <h3>The experiment will work in the following way:</h3>
+      <p>During this very short experiment, you will be presented with a sentence and for options either in camelCase
+        or in kebab-case, you will need to select the sentence that transofrm correctly the header sentence to either
+        one of this fonts.</p>
+      <h3>What is the purpose?</h3>
+      <p>We will collect the time taken and see which font is faster to read and undestand.</p>
+    </div>
+    <div class="text-box">
+      <h3>What is expected?</h3>
+      <ol>
+        <li>
+          <p><b>Focus:</b> This experiment takes literally minutes so please be focused during this time.</p>
+        </li>
+        <li>
+          <p><b>First instinct:</b> Make your selections based on your first instinct.</p>
+        </li>
+        <li>
+          <p><b>Honesty:</b> Do this alone.</p>
+        </li>
+        <li>
+          <p><b>Completness:</b> Please complete the quiz until the end.</p>
+        </li>
+      </ol>
+    </div>
+
+    <div class="text-box">
+      <h3>Use of Data</h3>
+      <ul>
+        <li>
+          <p><b>Data Management:</b> By doing the survey you allows us to use data gathered in our experiemnt.</p>
+        </li>
+        <li>
+          <p><b>Confidentiality:</b> Apart from being used in our experiment and on experiments trying to
+            replicate this study the data given is confidential, no name or way to refence this data to a
+            someone is possible.</p>
+        </li>
+        <li>
+          <p><b>Usage of Data:</b> The data collected will be used only for experiemnt purposes.</p>
+        </li>
+      </ul>
+    </div>
+    <button @click="$emit('proceed')">Proceed</button>
+  </div>
+</template>
   
   <script>
   export default {
