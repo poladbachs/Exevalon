@@ -4,8 +4,16 @@
       <div class="right_blank"></div>
       <main class="main-home">
         <WelcomePage v-if="currentStep === 'welcome'" @proceed="currentStep = 'demographic'" />
-        <DemographicForm v-if="currentStep === 'demographic'" @back="currentStep = 'welcome'" @formSubmitted="currentStep = 'experiment'" />
-        <ExperimentInterface v-if="currentStep === 'experiment'" @formSubmitted="currentStep = 'experiment'" @back="currentStep = 'welcome'"/>
+        <DemographicForm
+          v-if="currentStep === 'demographic'"
+          @back="currentStep = 'welcome'"
+          @formSubmitted="handleFormSubmit"
+        />
+        <ExperimentInterface
+          v-if="currentStep === 'experiment'"
+          :demographicData="demographicData"
+          @back="currentStep = 'welcome'"
+        />
       </main>
       <div class="left_blank"></div>
     </section>
@@ -27,9 +35,15 @@ export default {
   data() {
     return {
       currentStep: 'welcome',
+      demographicData: null,
     };
   },
-  
+  methods: {
+    handleFormSubmit(formData) {
+      this.demographicData = formData;
+      this.currentStep = 'experiment';
+    },
+  },
 };
 </script>
 
