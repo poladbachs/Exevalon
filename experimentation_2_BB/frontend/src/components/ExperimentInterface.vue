@@ -1,11 +1,8 @@
 <template>
   <div class="main-container">
-    <!-- Header -->
     <header class="header">
       <h1 class="header-title">🧪 Experiment Questions</h1>
     </header>
-
-    <!-- Content Section -->
     <section class="content-section">
       <div class="question-card">
         <p class="current-sentence">
@@ -33,11 +30,8 @@
             Go Back to Welcome Page
           </button>
         </div>
-
       </div>
     </section>
-
-    <!-- Footer -->
     <footer class="footer">
       <p>Created with ❤️ for research purposes.</p>
     </footer>
@@ -47,6 +41,12 @@
 <script>
 export default {
   name: "ExperimentInterface",
+  props: {
+    demographicData: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
       tasks: [
@@ -84,79 +84,81 @@ export default {
       return this.tasks[this.currentTaskIndex].sentence;
     },
     currentItems() {
-      return this.tasks[this.currentTaskIndex].options.map((option) => {
-        return {
-          identifier: option,
-          isCorrect: option === this.tasks[this.currentTaskIndex].correct,
-        };
-      });
+      return this.tasks[this.currentTaskIndex].options.map((option) => ({
+        identifier: option,
+        isCorrect: option === this.tasks[this.currentTaskIndex].correct,
+      }));
     },
-  },
-  mounted() {
-    this.startTask();
   },
   methods: {
-    storeAnswerAndTime() {
-      const answersData = this.selectedAnswers.map((answer) => ({
-        taskIndex: answer.taskIndex,
-        selectedIdentifier: answer.selectedIdentifier,
-        isCorrect: answer.isCorrect,
-        timeTaken: answer.timeTaken,
-      }));
+  storeAnswerAndTime() {
+    const userDataHeader = "Parameter,Value\n";
+    const userDataTable = [
+      `Age,${this.demographicData.age}`,
+      `Native Language,${this.demographicData.nativeLanguage}`,
+      `Education,${this.demographicData.education}`,
+      `Programming Experience,${this.demographicData.experience}`,
+      `Country,${this.demographicData.country}`,
+    ].join("\n");
+    const userDataContent = userDataHeader + userDataTable;
 
-      const csvContent =
-        "Task Index,Selected Identifier,Is Correct,Time Taken (ms)\n" +
-        answersData
-          .map(
-            (answer) =>
-              `${answer.taskIndex},${answer.selectedIdentifier},${answer.isCorrect},${answer.timeTaken}`
-          )
-          .join("\n");
+    const experimentResultsHeader = "Task Index,Selected Identifier,Is Correct,Time Taken (ms)\n";
+    const experimentResultsTable = this.selectedAnswers
+      .map(
+        (answer) =>
+          `${answer.taskIndex},${answer.selectedIdentifier},${answer.isCorrect},${answer.timeTaken}`
+      )
+      .join("\n");
+    const experimentResultsContent = experimentResultsHeader + experimentResultsTable;
 
-      const blob = new Blob([csvContent], { type: "text/csv" });
-      const link = document.createElement("a");
-      link.href = window.URL.createObjectURL(blob);
-      link.download = "experiment_results.csv";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    },
-    startTask() {
-      this.startTime = new Date();
-    },
-    selectItem(selectedItem) {
-      const endTime = new Date();
-      const timeTaken = endTime - this.startTime;
-      this.selectedAnswers.push({
-        taskIndex: this.currentTaskIndex,
-        selectedIdentifier: selectedItem.identifier,
-        isCorrect: selectedItem.isCorrect,
-        timeTaken,
-      });
-      this.moveToNextTask();
-    },
-    moveToNextTask() {
-      if (this.currentTaskIndex < this.tasks.length - 1) {
-        this.currentTaskIndex++;
-        this.startTask();
-      } else {
-        this.submitResults();
-      }
-    },
-    getLastTaskTime() {
-      if (this.selectedAnswers.length > 0) {
-        return this.selectedAnswers[this.selectedAnswers.length - 1].timeTaken;
-      }
-      return null;
-    },
-    submitResults() {
-      console.log("Experiment Completed", this.selectedAnswers);
-      this.storeAnswerAndTime();
-    },
-    goBackToWelcome() {
-      this.$emit("back");
-    },
+    const userDataBlob = new Blob([userDataContent], { type: "text/csv" });
+    const userDataLink = document.createElement("a");
+    userDataLink.href = window.URL.createObjectURL(userDataBlob);
+    userDataLink.download = "user_data.csv";
+    document.body.appendChild(userDataLink);
+    userDataLink.click();
+    document.body.removeChild(userDataLink);
+
+    const experimentResultsBlob = new Blob([experimentResultsContent], { type: "text/csv" });
+    const experimentResultsLink = document.createElement("a");
+    experimentResultsLink.href = window.URL.createObjectURL(experimentResultsBlob);
+    experimentResultsLink.download = "experiment_results.csv";
+    document.body.appendChild(experimentResultsLink);
+    experimentResultsLink.click();
+    document.body.removeChild(experimentResultsLink);
   },
+  selectItem(selectedItem) {
+    const endTime = new Date();
+    const timeTaken = endTime - this.startTime;
+    this.selectedAnswers.push({
+      taskIndex: this.currentTaskIndex,
+      selectedIdentifier: selectedItem.identifier,
+      isCorrect: selectedItem.isCorrect,
+      timeTaken,
+    });
+    this.moveToNextTask();
+  },
+  moveToNextTask() {
+    if (this.currentTaskIndex < this.tasks.length - 1) {
+      this.currentTaskIndex++;
+      this.startTask();
+    } else {
+      this.storeAnswerAndTime();
+    }
+  },
+  startTask() {
+    this.startTime = new Date();
+  },
+  getLastTaskTime() {
+    if (this.selectedAnswers.length > 0) {
+      return this.selectedAnswers[this.selectedAnswers.length - 1].timeTaken;
+    }
+    return null;
+  },
+  goBackToWelcome() {
+    this.$emit("back");
+  },
+},
 };
 </script>
 
