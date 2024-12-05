@@ -20,16 +20,13 @@
       <!-- Difference Between Fonts -->
       <div class="card">
         <h3 class="card-title">🔍 Difference Between Fonts</h3>
-        <ul>
-          <li>
-            <b>camelCase:</b> Words start with lowercase, subsequent words
-            capitalize the first letter (e.g., <code>doSomething</code>).
-          </li>
-          <li>
-            <b>kebab-case:</b> Words are separated by dashes (e.g.,
-            <code>do-something</code>).
-          </li>
-        </ul>
+        <div class="list-item">
+          <span class="list-title">camelCase:</span> Words start with lowercase, subsequent words capitalize the first
+          letter (e.g., <code>doSomething</code>).
+        </div>
+        <div class="list-item">
+          <span class="list-title">kebab-case:</span> Words are separated by dashes (e.g., <code>do-something</code>).
+        </div>
       </div>
 
       <!-- Experiment Purpose -->
@@ -45,26 +42,21 @@
       <!-- User Expectations -->
       <div class="card">
         <h3 class="card-title">💡 What is Expected?</h3>
-        <ol>
-          <li><b>Focus:</b> Stay attentive, as this will only take a few minutes.</li>
-          <li><b>First Instinct:</b> Rely on your initial impressions.</li>
-          <li><b>Honesty:</b> Complete the experiment independently.</li>
-          <li><b>Completeness:</b> Finish the quiz to contribute valuable data.</li>
-        </ol>
+        <div class="list-item"><span class="list-title">Focus:</span> Stay attentive, as this will only take a few
+          minutes.</div>
+        <div class="list-item"><span class="list-title">First Instinct:</span> Rely on your initial impressions.</div>
+        <div class="list-item"><span class="list-title">Honesty:</span> Complete the experiment independently.</div>
+        <div class="list-item"><span class="list-title">Completeness:</span> Finish the quiz to contribute valuable
+          data.</div>
       </div>
 
       <!-- Use of Data -->
       <div class="card">
         <h3 class="card-title">🔒 Use of Data</h3>
-        <ul>
-          <li>
-            <b>Data Management:</b> The collected data will be used for the
-            experiment only.
-          </li>
-          <li>
-            <b>Confidentiality:</b> No personal identifiers will be stored.
-          </li>
-        </ul>
+        <div class="list-item"><span class="list-title">Data Management:</span> The collected data will be used for the
+          experiment only.</div>
+        <div class="list-item"><span class="list-title">Confidentiality:</span> No personal identifiers will be stored.
+        </div>
       </div>
     </section>
 
@@ -137,6 +129,23 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.list-item {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.list-title {
+  color: #ff6363;
+  font-weight: bold;
+}
+
+
 .card:hover {
   transform: translateY(-10px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
@@ -204,9 +213,11 @@ body {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.05);
   }
+
   100% {
     transform: scale(1);
   }
@@ -216,6 +227,7 @@ body {
   .header-title {
     font-size: 24px;
   }
+
   .card-title {
     font-size: 18px;
   }
