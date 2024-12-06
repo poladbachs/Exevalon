@@ -60,16 +60,16 @@ export default {
         { sentence: "quick sort", options: ["quickSort", "QuickSort", "quicksort", "Quick Sort"], correct: "quickSort" },
         { sentence: "priority queue", options: ["priorityQueue", "PriorityQueue", "priorityqueue", "Priority Queue"], correct: "priorityQueue" },
         { sentence: "linked list", options: ["linkedList", "LinkedList", "linkedlist", "Linked List"], correct: "linkedList" },
-        { sentence: "right left", options: ["right-left", "rightleft", "right-left", "right left"], correct: "right-left" },
-        { sentence: "bubble sort algorithm", options: ["bubble-sort-algorithm", "bubblesort-algorithm", "bubble-sort-algorithm", "bubble Sort Algorithm"], correct: "bubble-sort-algorithm" },
-        { sentence: "tree traversal", options: ["tree-traversal", "treeTraversal", "tree traversal", "tree-traversal"], correct: "tree-traversal" },
-        { sentence: "binary search", options: ["binary-search", "binary-search", "binary-search", "Binary search"], correct: "binary-search" },
-        { sentence: "merge sort", options: ["merge-sort", "mergeSort", "merge sort", "merge Sort"], correct: "merge-sort" },
-        { sentence: "hash table", options: ["hash-table", "hashTable", "hash-table", "hashtable"], correct: "hash-table" },
-        { sentence: "depth first search", options: ["depth-first-search", "depthFirstSearch", "depth-first-search", "depth First Search"], correct: "depth-first-search" },
-        { sentence: "quick sort", options: ["quick-sort", "quickSort", "quick-sort", "Quick Sort"], correct: "quick-sort" },
-        { sentence: "priority queue", options: ["priority-queue", "priorityQueue", "priority-queue", "Priority Queue"], correct: "priority-queue" },
-        { sentence: "linked list", options: ["linked-list", "linkedList", "linked-list", "Linked List"], correct: "linked-list" },
+        { sentence: "right left", options: ["right-left", "right-Left", "right-Left", "rigHT-left"], correct: "right-left" },
+        { sentence: "bubble sort algorithm", options: ["bubble-sort-algorithm", "bubblesort-algorithm", "Bubble-sort-algorithm", "bubble-Sort-Algorithm"], correct: "bubble-sort-algorithm" },
+        { sentence: "tree traversal", options: ["tree-traversal", "tree-Traversal", "treE-traversal", "Tree-traversal"], correct: "tree-traversal" },
+        { sentence: "binary search", options: ["binary-search", "Binary-search", "binary-Search", "Binary-Search"], correct: "binary-search" },
+        { sentence: "merge sort", options: ["merge-sort", "merge-SORT", "Merge-Sort", "merge-Sort"], correct: "merge-sort" },
+        { sentence: "hash table", options: ["hash-table", "hash-Table", "Hash-table", "hash-TABLE"], correct: "hash-table" },
+        { sentence: "depth first search", options: ["depth-first-Search", "depth-First-Search", "depth-first-search", "Depth-First-Search"], correct: "depth-first-search" },
+        { sentence: "quick sort", options: ["quick-sort", "quick-Sort", "Quick-sort", "Quick-Sort"], correct: "quick-sort" },
+        { sentence: "priority queue", options: ["priority-queue", "priority-Queue", "Priority-Queue", "Priority-queue"], correct: "priority-queue" },
+        { sentence: "linked list", options: ["linked-list", "Linked-List", "linked-List", "Linked-List"], correct: "linked-list" },
       ],
       currentTaskIndex: 0,
       startTime: null,
@@ -90,75 +90,78 @@ export default {
       }));
     },
   },
+  mounted() {
+    this.startTask();
+  },
   methods: {
-  storeAnswerAndTime() {
-    const userDataHeader = "Parameter,Value\n";
-    const userDataTable = [
-      `Age,${this.demographicData.age}`,
-      `Native Language,${this.demographicData.nativeLanguage}`,
-      `Education,${this.demographicData.education}`,
-      `Programming Experience,${this.demographicData.experience}`,
-      `Country,${this.demographicData.country}`,
-    ].join("\n");
-    const userDataContent = userDataHeader + userDataTable;
+    storeAnswerAndTime() {
+      const userDataHeader = "Parameter,Value\n";
+      const userDataTable = [
+        `Age,${this.demographicData.age}`,
+        `Native Language,${this.demographicData.nativeLanguage}`,
+        `Education,${this.demographicData.education}`,
+        `Programming Experience,${this.demographicData.experience}`,
+        `Country,${this.demographicData.country}`,
+      ].join("\n");
+      const userDataContent = userDataHeader + userDataTable;
 
-    const experimentResultsHeader = "Task Index,Selected Identifier,Is Correct,Time Taken (ms)\n";
-    const experimentResultsTable = this.selectedAnswers
-      .map(
-        (answer) =>
-          `${answer.taskIndex},${answer.selectedIdentifier},${answer.isCorrect},${answer.timeTaken}`
-      )
-      .join("\n");
-    const experimentResultsContent = experimentResultsHeader + experimentResultsTable;
+      const experimentResultsHeader = "Task Index,Selected Identifier,Is Correct,Time Taken (ms)\n";
+      const experimentResultsTable = this.selectedAnswers
+        .map(
+          (answer) =>
+            `${answer.taskIndex},${answer.selectedIdentifier},${answer.isCorrect},${answer.timeTaken}`
+        )
+        .join("\n");
+      const experimentResultsContent = experimentResultsHeader + experimentResultsTable;
 
-    const userDataBlob = new Blob([userDataContent], { type: "text/csv" });
-    const userDataLink = document.createElement("a");
-    userDataLink.href = window.URL.createObjectURL(userDataBlob);
-    userDataLink.download = "user_data.csv";
-    document.body.appendChild(userDataLink);
-    userDataLink.click();
-    document.body.removeChild(userDataLink);
+      const userDataBlob = new Blob([userDataContent], { type: "text/csv" });
+      const userDataLink = document.createElement("a");
+      userDataLink.href = window.URL.createObjectURL(userDataBlob);
+      userDataLink.download = "user_data.csv";
+      document.body.appendChild(userDataLink);
+      userDataLink.click();
+      document.body.removeChild(userDataLink);
 
-    const experimentResultsBlob = new Blob([experimentResultsContent], { type: "text/csv" });
-    const experimentResultsLink = document.createElement("a");
-    experimentResultsLink.href = window.URL.createObjectURL(experimentResultsBlob);
-    experimentResultsLink.download = "experiment_results.csv";
-    document.body.appendChild(experimentResultsLink);
-    experimentResultsLink.click();
-    document.body.removeChild(experimentResultsLink);
+      const experimentResultsBlob = new Blob([experimentResultsContent], { type: "text/csv" });
+      const experimentResultsLink = document.createElement("a");
+      experimentResultsLink.href = window.URL.createObjectURL(experimentResultsBlob);
+      experimentResultsLink.download = "experiment_results.csv";
+      document.body.appendChild(experimentResultsLink);
+      experimentResultsLink.click();
+      document.body.removeChild(experimentResultsLink);
+    },
+    startTask() {
+      this.startTime = new Date();
+    },
+    selectItem(selectedItem) {
+      const endTime = new Date();
+      const timeTaken = endTime - this.startTime;
+      this.selectedAnswers.push({
+        taskIndex: this.currentTaskIndex,
+        selectedIdentifier: selectedItem.identifier,
+        isCorrect: selectedItem.isCorrect,
+        timeTaken,
+      });
+      this.moveToNextTask();
+    },
+    moveToNextTask() {
+      if (this.currentTaskIndex < this.tasks.length - 1) {
+        this.currentTaskIndex++;
+        this.startTask();
+      } else {
+        this.storeAnswerAndTime();
+      }
+    },
+    getLastTaskTime() {
+      if (this.selectedAnswers.length > 0) {
+        return this.selectedAnswers[this.selectedAnswers.length - 1].timeTaken;
+      }
+      return null;
+    },
+    goBackToWelcome() {
+      this.$emit("back");
+    },
   },
-  selectItem(selectedItem) {
-    const endTime = new Date();
-    const timeTaken = endTime - this.startTime;
-    this.selectedAnswers.push({
-      taskIndex: this.currentTaskIndex,
-      selectedIdentifier: selectedItem.identifier,
-      isCorrect: selectedItem.isCorrect,
-      timeTaken,
-    });
-    this.moveToNextTask();
-  },
-  moveToNextTask() {
-    if (this.currentTaskIndex < this.tasks.length - 1) {
-      this.currentTaskIndex++;
-      this.startTask();
-    } else {
-      this.storeAnswerAndTime();
-    }
-  },
-  startTask() {
-    this.startTime = new Date();
-  },
-  getLastTaskTime() {
-    if (this.selectedAnswers.length > 0) {
-      return this.selectedAnswers[this.selectedAnswers.length - 1].timeTaken;
-    }
-    return null;
-  },
-  goBackToWelcome() {
-    this.$emit("back");
-  },
-},
 };
 </script>
 
