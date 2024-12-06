@@ -69,7 +69,7 @@ export default {
         { sentence: "depth first search", options: ["depth-first-Search", "depth-First-Search", "depth-first-search", "Depth-First-Search"], correct: "depth-first-search" },
         { sentence: "quick sort", options: ["quick-sort", "quick-Sort", "Quick-sort", "Quick-Sort"], correct: "quick-sort" },
         { sentence: "priority queue", options: ["priority-queue", "priority-Queue", "Priority-Queue", "Priority-queue"], correct: "priority-queue" },
-        { sentence: "linked list", options: ["linked-list", "Linked-List", "linked-List", "Linked-List"], correct: "linked-list" },
+        { sentence: "linked list", options: ["linked-list", "Linked-List", "linked-List", "Linked-list"], correct: "linked-list" },
       ],
       currentTaskIndex: 0,
       startTime: null,
