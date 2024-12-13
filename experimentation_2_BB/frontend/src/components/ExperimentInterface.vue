@@ -119,7 +119,7 @@ export default {
       const userDataBlob = new Blob([userDataContent], { type: "text/csv" });
       const userDataLink = document.createElement("a");
       userDataLink.href = window.URL.createObjectURL(userDataBlob);
-      userDataLink.download = "user_data.csv";
+      userDataLink.download = "user_info.csv";
       document.body.appendChild(userDataLink);
       userDataLink.click();
       document.body.removeChild(userDataLink);
@@ -127,7 +127,7 @@ export default {
       const experimentResultsBlob = new Blob([experimentResultsContent], { type: "text/csv" });
       const experimentResultsLink = document.createElement("a");
       experimentResultsLink.href = window.URL.createObjectURL(experimentResultsBlob);
-      experimentResultsLink.download = "experiment_results.csv";
+      experimentResultsLink.download = "user_results.csv";
       document.body.appendChild(experimentResultsLink);
       experimentResultsLink.click();
       document.body.removeChild(experimentResultsLink);
