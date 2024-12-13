@@ -58,7 +58,7 @@ export default {
         { sentence: "priority queue", options: ["priority-qeue", "priorty-queue", "prioity-queue", "priority-queue"], correct: "priority-queue" },
         { sentence: "binary search", options: ["binarysearch", "BinarySearch", "binarySearch", "Binary search"], correct: "binarySearch" },
         { sentence: "merge sort", options: ["merge-sot", "merg-sort", "merge-sortt", "merge-sort"], correct: "merge-sort" },
-        { sentence: "merge sort", options: ["merge Sort", "mergeSort", "MergeSort", "mergesort"], correct: "mergeSort" },
+        { sentence: "quick sort", options: ["QuickSort", "quicksort", "quickSort", "Quick Sort"], correct: "quickSort" },
         { sentence: "bubble sort algorithm", options: ["bubble-Sor-Algorithm", "bublle-sort-algorithm", "bubble-sort-algoorithm", "bubble-sort-algorithm"], correct: "bubble-sort-algorithm" },
         { sentence: "depth first search", options: ["depth First Search", "DepthFirstSearch", "depthfirstsearch", "depthFirstSearch"], correct: "depthFirstSearch" },
         { sentence: "tree traversal", options: ["tree-Travesal", "tre-traversal", "tree-traversel", "tree-traversal"], correct: "tree-traversal" },
@@ -68,7 +68,7 @@ export default {
         { sentence: "priority queue", options: ["priorityQueue", "Priority Queue", "priorityqueue", "PriorityQueue"], correct: "priorityQueue" },
         { sentence: "quick sort", options: ["Quick-Sorrt", "qick-sort", "quick-sorrt", "quick-sort"], correct: "quick-sort" },
         { sentence: "right left", options: ["right-left", "rigth-left", "righ-left", "right-left"], correct: "right-left" },
-        { sentence: "quick sort", options: ["QuickSort", "quicksort", "quickSort", "Quick Sort"], correct: "quickSort" },
+        { sentence: "merge sort", options: ["merge Sort", "mergeSort", "MergeSort", "mergesort"], correct: "mergeSort" },
         { sentence: "linked list", options: ["Linked List", "linkedlist", "linkedList", "LinkedList"], correct: "linkedList" },
       ],
 
