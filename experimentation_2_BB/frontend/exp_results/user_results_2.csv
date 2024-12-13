@@ -1,0 +1,21 @@
+Task Index,Selected Identifier,Is Correct,Time Taken (ms)
+0,Rightleft,false,1583
+1,linked-list,true,2366
+2,bubbleSortAlgorithm,true,1734
+3,hash-table,true,1116
+4,Tree Traversal,false,933
+5,priority-queue,true,884
+6,binarySearch,true,1666
+7,merge-sort,true,1499
+8,quickSort,true,1367
+9,bubble-Sor-Algorithm,false,900
+10,depthFirstSearch,true,1616
+11,tree-traversal,true,2100
+12,hashTable,true,1367
+13,Binary-Searchh,false,1266
+14,deph-first-search,false,3517
+15,priorityQueue,true,1550
+16,qick-sort,false,1699
+17,right-left,true,1200
+18,mergeSort,true,1100
+19,linkedList,true,1117
