@@ -32,6 +32,15 @@
           <input type="text" id="country" v-model="country" class="form-input" />
           <div v-if="errors.country" class="error-message">{{ errors.country }}</div>
 
+          <label for="inputMethod" class="form-label">Are you using a touchpad or mouse for this
+            experiment?</label>
+          <select id="inputMethod" v-model="inputMethod" class="form-select">
+            <option value="" disabled>Select your input method</option>
+            <option value="Touchpad">Touchpad</option>
+            <option value="Mouse">Mouse</option>
+          </select>
+          <div v-if="errors.inputMethod" class="error-message">{{ errors.inputMethod }}</div>
+
           <div class="button-container">
             <button type="submit" class="form-button submit-button">Submit</button>
             <button type="button" class="form-button go-back-button" @click="goBack">Go Back</button>
@@ -55,6 +64,7 @@ export default {
       education: "",
       experience: null,
       country: "",
+      inputMethod: "",
       errors: {},
     };
   },
@@ -76,6 +86,9 @@ export default {
       if (!this.country || !isNaN(this.country)) {
         this.errors.country = "Please enter a valid country (letters only).";
       }
+      if (!this.inputMethod) {
+        this.errors.inputMethod = "Please select your preferred input method.";
+      }
       return Object.keys(this.errors).length === 0;
     },
     submitForm() {
@@ -86,6 +99,7 @@ export default {
         education: this.education,
         experience: this.experience,
         country: this.country,
+        inputMethod: this.inputMethod,
       };
       this.$emit("formSubmitted", formData);
     },
@@ -230,9 +244,11 @@ body {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.05);
   }
+
   100% {
     transform: scale(1);
   }

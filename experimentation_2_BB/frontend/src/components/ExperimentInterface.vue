@@ -6,9 +6,9 @@
     <section class="content-section">
       <div class="question-card">
         <p class="current-sentence">
-          <b>Sentence:</b> "{{ currentSentence }}"
+          <b>Label:</b> "{{ currentSentence }}"
         </p>
-        <p class="instruction-text">Select the right option:</p>
+        <p class="instruction-text">Select the correct written format:</p>
         <ul class="options-list">
           <li v-for="(item, index) in currentItems" :key="index" @click="selectItem(item)"
             :class="{ 'disabled': allTasksCompleted }" class="option-item">
@@ -51,26 +51,27 @@ export default {
     return {
       tasks: [
         { sentence: "right left", options: ["rightLeft", "rightleft", "Rightleft", "Right Left"], correct: "rightLeft" },
+        { sentence: "linked list", options: ["linker-list", "linkes-list", "linkedlist", "linked-list"], correct: "linked-list" },
         { sentence: "bubble sort algorithm", options: ["Bubble Sort algorithm", "bubbleSortAlgorithm", "bubble sort algorithm", "bubble Sor Talgorithm"], correct: "bubbleSortAlgorithm" },
+        { sentence: "hash table", options: ["hash-tabel", "hash-tablee", "hash-tabble", "hash-table"], correct: "hash-table" },
         { sentence: "tree traversal", options: ["Tree Traversal", "treeTraversal", "treetraversal", "TreeTraversal"], correct: "treeTraversal" },
+        { sentence: "priority queue", options: ["priority-qeue", "priorty-queue", "prioity-queue", "priority-queue"], correct: "priority-queue" },
         { sentence: "binary search", options: ["binarysearch", "BinarySearch", "binarySearch", "Binary search"], correct: "binarySearch" },
+        { sentence: "merge sort", options: ["merge-sot", "merg-sort", "merge-sortt", "merge-sort"], correct: "merge-sort" },
         { sentence: "merge sort", options: ["merge Sort", "mergeSort", "MergeSort", "mergesort"], correct: "mergeSort" },
-        { sentence: "hash table", options: ["HashTable", "hashTable", "hashtable", "hash table"], correct: "hashTable" },
+        { sentence: "bubble sort algorithm", options: ["bubble-Sor-Algorithm", "bublle-sort-algorithm", "bubble-sort-algoorithm", "bubble-sort-algorithm"], correct: "bubble-sort-algorithm" },
         { sentence: "depth first search", options: ["depth First Search", "DepthFirstSearch", "depthfirstsearch", "depthFirstSearch"], correct: "depthFirstSearch" },
-        { sentence: "quick sort", options: ["QuickSort", "quicksort", "quickSort", "Quick Sort"], correct: "quickSort" },
+        { sentence: "tree traversal", options: ["tree-Travesal", "tre-traversal", "tree-traversel", "tree-traversal"], correct: "tree-traversal" },
+        { sentence: "hash table", options: ["HashTable", "hashTable", "hashtable", "hash table"], correct: "hashTable" },
+        { sentence: "binary search", options: ["binary-search", "Binary-Searchh", "binnary-search", "binary-search"], correct: "binary-search" },
+        { sentence: "depth first search", options: ["Depth-First-Search", "depth-First-Serach", "deph-first-search", "depth-first-search"], correct: "depth-first-search" },
         { sentence: "priority queue", options: ["priorityQueue", "Priority Queue", "priorityqueue", "PriorityQueue"], correct: "priorityQueue" },
+        { sentence: "quick sort", options: ["Quick-Sorrt", "qick-sort", "quick-sorrt", "quick-sort"], correct: "quick-sort" },
+        { sentence: "right left", options: ["right-left", "rigth-left", "righ-left", "right-left"], correct: "right-left" },
+        { sentence: "quick sort", options: ["QuickSort", "quicksort", "quickSort", "Quick Sort"], correct: "quickSort" },
         { sentence: "linked list", options: ["Linked List", "linkedlist", "linkedList", "LinkedList"], correct: "linkedList" },
-        { sentence: "right left", options: ["right-left", "right-Left", "rigHT-left", "right-Left"], correct: "right-left" },
-        { sentence: "bubble sort algorithm", options: ["bubble-Sort-Algorithm", "bubble-sort-algorithm", "bubblesort-algorithm", "Bubble-sort-algorithm"], correct: "bubble-sort-algorithm" },
-        { sentence: "tree traversal", options: ["tree-Traversal", "Tree-traversal", "tree-traversal", "treE-traversal"], correct: "tree-traversal" },
-        { sentence: "binary search", options: ["binary-search", "Binary-Search", "Binary-search", "binary-Search"], correct: "binary-search" },
-        { sentence: "merge sort", options: ["merge-Sort", "merge-sort", "Merge-Sort", "merge-SORT"], correct: "merge-sort" },
-        { sentence: "hash table", options: ["hash-Table", "hash-table", "Hash-table", "hash-TABLE"], correct: "hash-table" },
-        { sentence: "depth first search", options: ["Depth-First-Search", "depth-First-Search", "depth-first-Search", "depth-first-search"], correct: "depth-first-search" },
-        { sentence: "quick sort", options: ["Quick-Sort", "Quick-sort", "quick-sort", "quick-Sort"], correct: "quick-sort" },
-        { sentence: "priority queue", options: ["priority-Queue", "priority-queue", "Priority-queue", "Priority-Queue"], correct: "priority-queue" },
-        { sentence: "linked list", options: ["Linked-list", "Linked-List", "linked-list", "linked-List"], correct: "linked-list" },
       ],
+
       currentTaskIndex: 0,
       startTime: null,
       selectedAnswers: [],
@@ -102,6 +103,7 @@ export default {
         `Education,${this.demographicData.education}`,
         `Programming Experience,${this.demographicData.experience}`,
         `Country,${this.demographicData.country}`,
+        `Input Method,${this.demographicData.inputMethod}`,
       ].join("\n");
       const userDataContent = userDataHeader + userDataTable;
 
