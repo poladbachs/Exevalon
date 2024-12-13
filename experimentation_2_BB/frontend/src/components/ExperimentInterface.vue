@@ -68,7 +68,7 @@ export default {
         { sentence: "priority queue", options: ["priorityQueue", "Priority Queue", "PriorityQueue", "priorityqueue"], correct: "priorityQueue" },
         { sentence: "quick sort", options: ["quick-sorrt", "Quick-Sorrt", "qick-sort", "quick-sort"], correct: "quick-sort" },
         { sentence: "right left", options: ["rigth-left", "righ-left", "right-left", "righrt-left"], correct: "right-left" },
-        { sentence: "merge sort", options: ["merge Sort", "mergeSort", "merge Sort", "MergeSort"], correct: "mergeSort" },
+        { sentence: "merge sort", options: ["Merge Sort", "mergeSort", "merge Sort", "MergeSort"], correct: "mergeSort" },
         { sentence: "linked list", options: ["linkedList", "Linked List", "LinkedList", "linkedlist"], correct: "linkedList" },
       ],
 
