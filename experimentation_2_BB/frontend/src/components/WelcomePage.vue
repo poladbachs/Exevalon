@@ -1,13 +1,10 @@
 <template>
   <div class="main-container">
-    <!-- Header -->
     <header class="header">
       <h1 class="header-title">🚀 Welcome to the Experiment</h1>
     </header>
 
-    <!-- Cards Section -->
     <section class="cards-section">
-      <!-- Experiment Explanation -->
       <div class="card">
         <h3 class="card-title">📝 Experiment Explanation</h3>
         <p>
@@ -17,7 +14,6 @@
         </p>
       </div>
 
-      <!-- Difference Between Fonts -->
       <div class="card">
         <h3 class="card-title">🔍 Difference Between Fonts</h3>
         <div class="list-item">
@@ -29,7 +25,6 @@
         </div>
       </div>
 
-      <!-- Experiment Purpose -->
       <div class="card">
         <h3 class="card-title">🎯 Purpose of the Experiment</h3>
         <p>
@@ -39,7 +34,6 @@
         </p>
       </div>
 
-      <!-- User Expectations -->
       <div class="card">
         <h3 class="card-title">💡 What is Expected?</h3>
         <div class="list-item"><span class="list-title">Focus:</span> Stay attentive, as this will only take a few
@@ -50,7 +44,6 @@
           data.</div>
       </div>
 
-      <!-- Use of Data -->
       <div class="card">
         <h3 class="card-title">🔒 Use of Data</h3>
         <div class="list-item"><span class="list-title">Data Management:</span> The collected data will be used for the
@@ -60,12 +53,10 @@
       </div>
     </section>
 
-    <!-- Proceed Button -->
     <div class="button-container">
       <button @click="$emit('proceed')" class="proceed-button">Start the Experiment</button>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
       <p>Created with ❤️ for research purposes.</p>
     </footer>
